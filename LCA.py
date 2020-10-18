@@ -11,9 +11,10 @@ def findPath(root, path, k):
         return False
     
     path.append(root.key)
-    if root.key is k:
+    if root.key == k:
         return True
 
+# find paths from root node to given nodes (LCA)
 def findLCA(root, nr1, nr2):
     path1 = []
     path2 = []
@@ -22,4 +23,10 @@ def findLCA(root, nr1, nr2):
     if (not findPath(root, path1, nr1) or not findPath(root, path2, nr2)): 
         return -1 
     
+    i = 0
+    while i < len(path1) and i < len(path2):
+        if path2[i] != path1[i]:
+            break
+        i += 1
+    return path1[i-1]
     
