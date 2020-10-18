@@ -14,13 +14,19 @@ def findPath(root, path, k):
     if root.key == k:
         return True
 
+    if ((root.left is not None and findPath(root.left, path, k)) or (root.right is not None and findPath(root.right, path, k))):
+        return True
+
+    path.pop()
+    return False
+
 # find paths from root node to given nodes (LCA)
 def findLCA(root, nr1, nr2):
     path1 = []
     path2 = []
 
     # find path1 and path2 from root and return -1 if either node is not present
-    if (not findPath(root, path1, nr1) or not findPath(root, path2, nr2)): 
+    if not findPath(root, path1, nr1) or not findPath(root, path2, nr2): 
         return -1 
     
     i = 0
