@@ -47,3 +47,12 @@ class TestLCA(unittest.TestCase):
         # node not in tree
         self.assertEqual(findPath(root, path, 8), False)    
 
+    # empty tree
+    def test_findLCAEmpty(self):
+        root = Node()
+        self.assertEqual(findLCA(root, 0, 1) -1)
+        
+    # node not in tree
+    def test_findLCANotInTree(self):
+        root = Node(2)
+        self.assertEqual(findLCA(root, 3, 4) -1)
